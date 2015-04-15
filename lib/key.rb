@@ -2,8 +2,12 @@ class Key
 
   attr_reader :key, :rotation_a, :rotation_b, :rotation_c, :rotation_d
 
-  def initialize(key)
-    @key = key
+  def initialize(key=nil)
+    @key = key || generate
+  end
+
+  def generate
+    (0...5).map { rand(9) }.join
   end
 
   def check_length_is_five
@@ -26,8 +30,5 @@ class Key
     @rotation_d = @key[3..4]
   end
 
-  # def generate
-  #   (0...5).map {rand(9) }.join
-  # end
 end
 

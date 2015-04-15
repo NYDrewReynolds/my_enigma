@@ -2,8 +2,8 @@ class Date
 
   attr_reader :date, :squared, :date_code
 
-  def initialize(date)
-    @date = date
+  def initialize(date=nil)
+    @date = date || Time.now.strftime("%d%m%y")
   end
 
   def square_date
