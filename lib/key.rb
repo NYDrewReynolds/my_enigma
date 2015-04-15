@@ -1,6 +1,6 @@
 class Key
 
-  attr_reader :key, :rotation_a, :rotation_b, :rotation_c, :rotation_d
+  attr_reader :key
 
   def initialize(key=nil)
     @key = key || generate
@@ -15,20 +15,19 @@ class Key
   end
 
   def grab_rotation_a
-    @rotation_a = @key[0..1]
+    @key[0..1]
   end
 
   def grab_rotation_b
-    @rotation_b = @key[1..2]
+    @key[1..2]
   end
 
   def grab_rotation_c
-    @rotation_c = @key[2..3]
+    @key[2..3]
   end
 
   def grab_rotation_d
-    @rotation_d = @key[3..4]
+    @key[3..4]
   end
 
 end
-

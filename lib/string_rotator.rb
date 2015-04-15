@@ -1,5 +1,6 @@
 require './lib/offset.rb'
 require './lib/letter_rotator.rb'
+require 'pry'
 
 class StringRotator
 
@@ -10,19 +11,15 @@ class StringRotator
 
   def encrypt
     @original.chars.map.with_index do |character, index|
-
       letter = LetterRotator.new(character, pick_offset[index%4])
       letter.rotate_forward
-
     end.join
   end
 
   def decrypt
     @original.chars.map.with_index do |character, index|
-
       letter = LetterRotator.new(character, pick_offset[index%4])
       letter.rotate_backward
-
     end.join
   end
 
