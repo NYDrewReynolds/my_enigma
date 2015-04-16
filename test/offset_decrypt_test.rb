@@ -1,18 +1,18 @@
 require 'minitest/autorun'
 require 'minitest'
 require 'minitest/pride'
-require './lib/offset.rb'
+require './lib/offset_decrypt.rb'
 
-class OffsetTest < Minitest::Test
+class OffsetDecryptTest < Minitest::Test
 
   def setup
-    key = Key.new("41521")
-    date = Date.new("020315")
-    @offset = Offset.new(key, date)
+    key = Key.new("41521").key
+    date = Date.new("020315").date
+    @offset = OffsetDecrypt.new(key, date)
   end
 
   def test_it_exists
-    assert Offset
+    assert OffsetDecrypt
   end
 
   def test_it_combines_a_values
@@ -28,7 +28,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_be_wrong_b
-    refute_equal 0, @offset.b
+    refute_equal 3, @offset.b
   end
 
   def test_it_combines_c_values
@@ -36,7 +36,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_be_wrong_c
-    refute_equal 49, @offset.c
+    refute_equal 90, @offset.c
   end
 
   def test_it_combines_d_values
@@ -44,6 +44,6 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_can_be_wrong_d
-    refute_equal 62, @offset.d
+    refute_equal 55, @offset.d
   end
 end

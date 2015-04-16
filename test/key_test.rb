@@ -13,6 +13,11 @@ class KeyTest < Minitest::Test
     assert true, key.check_length_is_five
   end
 
+  def test_it_wont_take_over_five_digits
+    key = Key.new("123456")
+    refute false, key.check_length_is_five
+  end
+
   def test_it_grabs_first_two_digits
     key = Key.new("41521")
     assert_equal "41", key.grab_rotation_a
@@ -36,5 +41,10 @@ class KeyTest < Minitest::Test
   def test_it_works_if_starting_with_zero
     key = Key.new("01275")
     assert_equal "01", key.grab_rotation_a
+  end
+
+  def test_it_works_if_all_zeros
+    key = Key.new("00000")
+    assert_equal "00", key.grab_rotation_a
   end
 end

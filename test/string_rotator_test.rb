@@ -36,4 +36,14 @@ class StringRotatorTest < Minitest::Test
     message = StringRotator.new("aaaaaaaa", @offset)
     assert_equal "lrp0lrp0", message.encrypt
   end
+
+  def test_it_converts_capital_letter
+    message = StringRotator.new("A", @offset)
+    assert_equal "l", message.encrypt
+  end
+
+  def test_it_converts_all_caps_sentence
+    message = StringRotator.new("A TEST", @offset)
+    assert_equal "lo843 ", message.encrypt
+  end
 end
